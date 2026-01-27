@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Travel Message - Send Messages Through Time</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="container">
+        <header>
+            <div class="logo">⏰</div>
+            <h1>Time Travel Message</h1>
+            <p class="tagline">Send messages to your future self. Receive messages from your past.</p>
+        </header>
+
+        <main>
+            <!-- Mode Selector -->
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="send">📤 Send to Future</button>
+                <button class="mode-btn" data-mode="receive">📥 Time Capsules</button>
+                <button class="mode-btn" data-mode="past">⏪ From the Past</button>
+            </div>
+
+            <!-- Send Mode -->
+            <div class="section send-section" id="send-section">
+                <h2>✉️ Compose Your Message</h2>
+                
+                <div class="form-group">
+                    <label>When should this message arrive?</label>
+                    <div class="time-presets">
+                        <button class="preset-btn" data-days="1">Tomorrow</button>
+                        <button class="preset-btn" data-days="7">1 Week</button>
+                        <button class="preset-btn" data-days="30">1 Month</button>
+                        <button class="preset-btn" data-days="365">1 Year</button>
+                        <button class="preset-btn" data-days="1825">5 Years</button>
+                        <button class="preset-btn active" data-days="custom">Custom</button>
+                    </div>
+                    <input type="date" id="delivery-date" class="date-input">
+                </div>
+
+                <div class="form-group">
+                    <label>Your message:</label>
+                    <textarea id="message-input" placeholder="Dear Future Me,
+
+Write something meaningful. What do you want to remember? What advice do you have? What are you hoping for?
+
+Your past self"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Delivery email (optional):</label>
+                    <input type="email" id="email-input" placeholder="your@email.com">
+                    <p class="hint">We'll try to email you when the time comes (stored locally only)</p>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="surprise-me" checked>
+                        Don't show me the exact date (surprise me!)
+                    </label>
+                </div>
+
+                <button class="send-btn" id="send-btn">
+                    🚀 Send Through Time
+                </button>
+            </div>
+
+            <!-- Receive Mode (Time Capsules) -->
+            <div class="section receive-section" id="receive-section" style="display:none;">
+                <h2>📬 Your Time Capsules</h2>
+                
+                <div class="capsules-stats">
+                    <div class="stat">
+                        <span class="stat-value" id="waiting-count">0</span>
+                        <span class="stat-label">Waiting</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="ready-count">0</span>
+                        <span class="stat-label">Ready to Open</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="opened-count">0</span>
+                        <span class="stat-label">Opened</span>
+                    </div>
+                </div>
+
+                <div class="capsules-list" id="capsules-list">
+                    <p class="empty-state">No time capsules yet. Send a message to your future self!</p>
+                </div>
+            </div>
+
+            <!-- Past Mode -->
+            <div class="section past-section" id="past-section" style="display:none;">
+                <h2>⏪ Messages From Your Past Self</h2>
+                <p class="intro">These are messages that your past self wanted you to read today.</p>
+                
+                <div class="past-messages" id="past-messages">
+                    <div class="past-message arriving">
+                        <div class="transmission-effect">
+                            <span>◈</span><span>◇</span><span>◈</span><span>◇</span><span>◈</span>
+                        </div>
+                        <p>Scanning temporal frequencies...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Message Viewer Modal -->
+            <div class="modal" id="message-modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="modal-icon">📜</span>
+                        <h3>Message from <span id="modal-date"></span></h3>
+                    </div>
+                    <div class="modal-body" id="modal-body"></div>
+                    <div class="modal-footer">
+                        <button id="close-modal" class="modal-btn">Close</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fun Quote -->
+            <div class="quote-section">
+                <blockquote id="time-quote">
+                    "The only reason for time is so that everything doesn't happen at once."
+                </blockquote>
+                <cite>— Albert Einstein</cite>
+            </div>
+        </main>
+
+        <footer>
+            <p>Your future self will thank you ⌛</p>
+        </footer>
+    </div>
+
+    <!-- Sent Confirmation -->
+    <div class="sent-overlay" id="sent-overlay" style="display:none;">
+        <div class="sent-content">
+            <div class="portal-effect"></div>
+            <h2>🌀 Message Sent!</h2>
+            <p>Your message is traveling through time...</p>
+            <p class="delivery-info" id="delivery-info"></p>
+            <button class="close-sent" onclick="closeSent()">✨ Amazing</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
